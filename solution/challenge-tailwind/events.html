@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lịch sự kiện (bản Tailwind) · EduHub Web</title>
+    <meta name="description" content="Bài challenge Ch02: trang lịch sự kiện EduHub Web viết lại bằng Tailwind CSS v4.">
+    <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+    <!-- tailwind.css do "npm run build" sinh ra từ src/input.css -->
+    <link rel="stylesheet" href="tailwind.css">
+  </head>
+  <body class="flex min-h-screen flex-col bg-sky font-sans text-ink antialiased dark:bg-navy-deep dark:text-slate-100">
+    <a class="absolute top-2 left-2 z-50 -translate-y-[200%] rounded-md bg-accent px-4 py-2 font-semibold text-navy focus-visible:translate-y-0" href="#noi-dung">Bỏ qua, đến nội dung chính</a>
+
+    <header class="z-10 bg-navy text-white shadow-md sm:sticky sm:top-0 dark:bg-black">
+      <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
+        <a class="inline-flex items-center gap-2 text-lg font-bold" href="../index.html">
+          <img class="size-9" src="../assets/logo.svg" alt="" width="48" height="48">
+          <span>Edu<span class="text-accent">Hub</span></span>
+        </a>
+        <nav aria-label="Điều hướng chính">
+          <ul class="flex flex-wrap gap-1">
+            <li><a class="block rounded-full px-3 py-2 text-sm font-semibold sm:px-4 sm:text-base text-white hover:bg-white/10" href="../index.html">Trang chủ</a></li>
+            <li><a class="block rounded-full px-3 py-2 text-sm font-semibold sm:px-4 sm:text-base bg-accent text-navy" href="events.html" aria-current="page">Sự kiện</a></li>
+            <li><a class="block rounded-full px-3 py-2 text-sm font-semibold sm:px-4 sm:text-base text-white hover:bg-white/10" href="../index.html#cau-lac-bo">Câu lạc bộ</a></li>
+            <li><a class="block rounded-full px-3 py-2 text-sm font-semibold sm:px-4 sm:text-base text-white hover:bg-white/10" href="../register.html">Đăng ký thành viên</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="noi-dung" class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6">
+      <h1 class="text-3xl font-bold text-balance lg:text-5xl">Lịch sự kiện</h1>
+      <p class="mt-3 mb-8 max-w-prose text-lg text-slate-600 dark:text-slate-300">
+        Bản viết lại bằng Tailwind CSS v4. So sánh với <a class="text-primary underline dark:text-primary-light" href="../events.html">bản CSS thuần</a>:
+        giao diện giống nhau, nhưng kiểu nằm ngay trong HTML dưới dạng class tiện ích.
+      </p>
+
+      <!-- Lưới tự chia cột như bản CSS thuần: giá trị tuỳ ý viết trong [ ] -->
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(16rem,100%),1fr))] gap-6">
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-tin-hoc.svg" alt="Biểu tượng CLB Tin học" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Tin học</span>
+              <span data-hot class="inline-flex items-center gap-1 rounded-md bg-orange-100 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-warning dark:bg-orange-950 dark:text-orange-300"><span class="size-2 animate-pulse rounded-full bg-current motion-reduce:animate-none"></span>Sắp hết chỗ</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../event-detail.html">Workshop: Làm website đầu tiên với HTML</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-10-17T07:30+07:00">07:30, thứ Bảy 17/10/2026</time> · Phòng máy B1.203</p>
+            <p class="text-slate-600 dark:text-slate-300">Hai giờ thực hành: viết trang giới thiệu bản thân và đưa lên GitHub Pages.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-warning dark:text-orange-300 dark:border-line-dark">Còn 12/60 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-tinh-nguyen.svg" alt="Biểu tượng CLB Tình nguyện" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Tình nguyện</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Ngày hội Hiến máu tình nguyện</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-10-24T07:00+07:00">07:00, thứ Bảy 24/10/2026</time> · Hội trường lớn</p>
+            <p class="text-slate-600 dark:text-slate-300">Mỗi giọt máu cho đi, một cuộc đời ở lại. Có giấy chứng nhận và quà cho người tham gia.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-green-700 dark:text-green-400 dark:border-line-dark">Còn 140/300 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-tieng-anh.svg" alt="Biểu tượng CLB Tiếng Anh" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Tiếng Anh</span>
+              <span data-hot class="inline-flex items-center gap-1 rounded-md bg-orange-100 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-warning dark:bg-orange-950 dark:text-orange-300"><span class="size-2 animate-pulse rounded-full bg-current motion-reduce:animate-none"></span>Sắp hết chỗ</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">English Speaking Night: Halloween</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-10-31T18:30+07:00">18:30, thứ Bảy 31/10/2026</time> · Sảnh nhà A1</p>
+            <p class="text-slate-600 dark:text-slate-300">Trò chơi, hoá trang và luyện nói tiếng Anh cùng sinh viên các khoa.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-warning dark:text-orange-300 dark:border-line-dark">Còn 6/80 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-bong-da.svg" alt="Biểu tượng CLB Bóng đá" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Bóng đá</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Giải bóng đá sinh viên Khoa Công nghệ và Kỹ thuật 2026</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-11-08T07:00+07:00">07:00, Chủ nhật 08/11/2026</time> · Sân bóng đá của trường</p>
+            <p class="text-slate-600 dark:text-slate-300">Tám đội bóng của các lớp tranh cúp, cổ động viên được tặng áo đồng phục.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-green-700 dark:text-green-400 dark:border-line-dark">Còn 64/160 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-am-nhac.svg" alt="Biểu tượng CLB Âm nhạc" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Âm nhạc</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Đêm nhạc Tri ân thầy cô 20/11</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-11-14T19:00+07:00">19:00, thứ Bảy 14/11/2026</time> · Hội trường lớn</p>
+            <p class="text-slate-600 dark:text-slate-300">Các tiết mục guitar, thanh nhạc và hợp xướng dành tặng thầy cô.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-green-700 dark:text-green-400 dark:border-line-dark">Còn 215/400 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-ky-nang-mem.svg" alt="Biểu tượng CLB Kỹ năng mềm" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Kỹ năng mềm</span>
+              <span data-hot class="inline-flex items-center gap-1 rounded-md bg-orange-100 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-warning dark:bg-orange-950 dark:text-orange-300"><span class="size-2 animate-pulse rounded-full bg-current motion-reduce:animate-none"></span>Sắp hết chỗ</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Kỹ năng thuyết trình trước đám đông</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-11-21T14:00+07:00">14:00, thứ Bảy 21/11/2026</time> · Phòng B2.105</p>
+            <p class="text-slate-600 dark:text-slate-300">Luyện cách mở đầu, dùng giọng nói và ánh mắt, xử lý câu hỏi khó.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-warning dark:text-orange-300 dark:border-line-dark">Còn 9/100 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-tin-hoc.svg" alt="Biểu tượng CLB Tin học" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Tin học</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Olympic Tin học sinh viên cấp trường</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-12-05T08:00+07:00">08:00, thứ Bảy 05/12/2026</time> · Phòng máy B1.201–B1.203</p>
+            <p class="text-slate-600 dark:text-slate-300">Thi giải thuật cá nhân trong 3 giờ, chọn đội tuyển dự thi cấp quốc gia.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-green-700 dark:text-green-400 dark:border-line-dark">Còn 47/120 chỗ</p>
+          </div>
+        </article>
+
+        <article class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none has-[[data-hot]]:border-warning has-[[data-hot]]:ring-1 has-[[data-hot]]:ring-warning dark:border-line-dark dark:bg-navy dark:has-[[data-hot]]:border-orange-300 dark:has-[[data-hot]]:ring-orange-300">
+          <img class="aspect-video w-full object-cover" src="../assets/club-tinh-nguyen.svg" alt="Biểu tượng CLB Tình nguyện" width="640" height="360" loading="lazy">
+          <div class="flex flex-1 flex-col gap-2 px-6 pt-4 pb-6">
+            <p class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-sky-muted px-3 py-0.5 text-sm font-semibold text-primary dark:bg-line-dark dark:text-primary-light">CLB Tình nguyện</span>
+            </p>
+            <h2 class="text-lg font-bold leading-tight text-balance">
+              <a class="after:absolute after:inset-0 group-hover:text-primary dark:group-hover:text-primary-light" href="../events.html">Ra quân Chiến dịch Xuân tình nguyện 2027</a>
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300"><time class="font-semibold text-ink dark:text-white" datetime="2026-12-13T07:00+07:00">07:00, Chủ nhật 13/12/2026</time> · Sân trường</p>
+            <p class="text-slate-600 dark:text-slate-300">Gói quà Tết, sửa nhà tình thương và dạy học cho trẻ em vùng sâu.</p>
+            <p class="mt-auto border-t border-dashed border-line pt-3 text-sm font-semibold text-green-700 dark:text-green-400 dark:border-line-dark">Còn 120/200 chỗ</p>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="mt-16 bg-navy py-8 text-sm text-slate-300 dark:bg-black">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 sm:px-6 lg:flex-row lg:justify-between">
+        <p>EduHub Web · Trường Đại học Đồng Tháp · 783 Phạm Hữu Lầu, Cao Lãnh, Đồng Tháp</p>
+        <p>Liên hệ: <a class="text-accent underline" href="mailto:eduhub@dthu.edu.vn">eduhub@dthu.edu.vn</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

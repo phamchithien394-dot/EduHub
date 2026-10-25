@@ -1,0 +1,194 @@
+/* ==========================================================================
+   tokens.css — Design token của EduHub Web
+   Mọi tệp khác chỉ dùng var(--…) khai báo ở đây, không viết mã màu trực tiếp.
+   Ch04 sẽ chép các token này sang @theme của Tailwind.
+   ========================================================================== */
+
+:root {
+  /* Bảng màu gốc của dự án (cho sẵn) */
+  --palette-blue-900: #001d45;   /* tối */
+  --palette-blue-700: #003f87;   /* chính */
+  --palette-blue-50: #f0f7ff;    /* nền */
+  --palette-cyan-500: #00c4cc;   /* nhấn */
+  --palette-ink: #1a1a2e;        /* chữ */
+  --palette-white: #ffffff;
+
+  /* TODO(ch2-T1): Màu theo vai trò (semantic), lấy giá trị từ palette ở trên:
+       --color-primary, --color-on-primary, --color-accent, --color-bg, --color-surface,
+       --color-text, --color-text-muted, --color-border, --color-link, --color-focus,
+       --color-warning, --color-warning-bg, --color-danger, --color-success,
+       --color-header-bg, --color-header-text */
+
+  /* TODO(ch2-T1): Chữ
+       --font-sans: "Be Vietnam Pro", system-ui, … , sans-serif;  (không tải font ngoài)
+       Thang cỡ chữ --text-sm … --text-3xl; ít nhất một cỡ dùng clamp(min, co giãn, max) */
+
+  /* TODO(ch2-T1): Khoảng cách theo thang 4px bằng rem: --space-1 (0.25rem), --space-2, --space-3,
+       --space-4, --space-6, --space-8, --space-12, --space-16 */
+
+  /* TODO(ch2-T1): Bo góc --radius-sm/md/lg/full; đổ bóng --shadow-sm/md/lg;
+       --container-max (vd. 72rem); thời gian chuyển động --duration-fast/normal */
+
+  /* TODO(ch2-T1): Ghi chú breakpoint (var() KHÔNG dùng được trong @media, chỉ để tra cứu):
+       --breakpoint-sm: 40rem;  (640px)   --breakpoint-lg: 64rem;  (1024px) */
+
+  /* TODO(ch2-T1): color-scheme: light dark; */
+}
+
+/* TODO(ch2-T1): Dark mode — trong @media (prefers-color-scheme: dark) { :root { … } }
+   chỉ đổi giá trị các token --color-* (nền tối, chữ sáng, primary sáng hơn để đủ tương phản). */
+/* bài tap
+
+/* ==========================================================================
+   tokens.css — Design tokens của EduHub Web
+   Ch2-T1: Khai báo biến màu sắc, typography, spacing, radius, shadow,
+   bố cục và dark mode.
+   ========================================================================== */
+
+/* 1. Design tokens mặc định — Light mode */
+:root {
+  /* ---- Bảng màu gốc (Palette) ---- */
+  --palette-blue-900: #001d45;
+  --palette-blue-700: #003f87;
+  --palette-blue-300: #7fb2ff;
+  --palette-blue-50: #f0f7ff;
+
+  --palette-cyan-500: #00c4cc;
+  --palette-cyan-700: #007a80;
+
+  --palette-ink: #1a1a2e;
+  --palette-white: #ffffff;
+
+  --palette-orange-600: #c2410c;
+  --palette-orange-100: #ffedd5;
+
+  --palette-red-600: #dc2626;
+  --palette-green-700: #15803d;
+
+  /* ---- Màu ngữ nghĩa (Semantic color tokens) ---- */
+  --color-primary: var(--palette-blue-700);
+  --color-primary-hover: var(--palette-blue-900);
+  --color-on-primary: var(--palette-white);
+
+  --color-accent: var(--palette-cyan-500);
+  --color-accent-strong: var(--palette-cyan-700);
+
+  --color-bg: var(--palette-blue-50);
+  --color-surface: var(--palette-white);
+  --color-surface-muted: #e3eefc;
+
+  --color-text: var(--palette-ink);
+  --color-text-muted: #4a5468;
+  --color-border: #cbd9ec;
+  --color-link: var(--palette-blue-700);
+  --color-focus: var(--palette-cyan-500);
+
+  --color-warning: var(--palette-orange-600);
+  --color-warning-bg: var(--palette-orange-100);
+  --color-danger: var(--palette-red-600);
+  --color-success: var(--palette-green-700);
+
+  --color-header-bg: var(--palette-blue-900);
+  --color-header-text: var(--palette-white);
+
+  /* ---- Font chữ ---- */
+  --font-sans:
+    "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --font-mono:
+    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ---- Cỡ chữ responsive ---- */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.3rem + 2.4vw, 3rem);
+
+  /* ---- Chiều cao dòng và độ đậm ---- */
+  --leading-tight: 1.25;
+  --leading-normal: 1.6;
+
+  --weight-normal: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Khoảng cách: hệ thống cơ sở 4px ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ---- Bo góc ---- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-full: 999px;
+
+  /* ---- Đổ bóng ---- */
+  --shadow-sm: 0 1px 2px rgb(0 29 69 / 8%);
+  --shadow-md: 0 4px 12px rgb(0 29 69 / 10%);
+  --shadow-lg: 0 12px 28px rgb(0 29 69 / 16%);
+
+  /* ---- Chiều rộng bố cục ---- */
+  --container-max: 72rem;
+  --container-narrow: 44rem;
+
+  /* ---- Thời gian và kiểu chuyển động ---- */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ---- Breakpoint tham khảo ----
+     CSS không cho dùng custom property trong điều kiện @media.
+     Mobile-first:
+     40rem = 640px  (sm)
+     64rem = 1024px (lg)
+  */
+  --breakpoint-sm: 40rem;
+  --breakpoint-lg: 64rem;
+
+  /* Mặc định sử dụng bảng màu sáng của trình duyệt */
+  color-scheme: light;
+}
+
+/* 2. Dark mode — chỉ thay đổi các token cần thiết */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-primary: var(--palette-blue-300);
+    --color-primary-hover: #a9cbff;
+    --color-on-primary: var(--palette-blue-900);
+
+    --color-accent-strong: var(--palette-cyan-500);
+
+    --color-bg: #000f26;
+    --color-surface: var(--palette-blue-900);
+    --color-surface-muted: #0a2a57;
+
+    --color-text: #e6eef8;
+    --color-text-muted: #a8b6cc;
+    --color-border: #1f3d66;
+    --color-link: var(--palette-blue-300);
+    --color-focus: var(--palette-cyan-500);
+
+    --color-warning: #fdba74;
+    --color-warning-bg: #3b1d0a;
+    --color-danger: #f87171;
+    --color-success: #4ade80;
+
+    --color-header-bg: #000a1a;
+    --color-header-text: var(--palette-white);
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+    --shadow-md: 0 4px 12px rgb(0 0 0 / 45%);
+    --shadow-lg: 0 12px 28px rgb(0 0 0 / 55%);
+  }
+}

@@ -1,0 +1,244 @@
+/* ==========================================================================
+   layout.css — khung trang: container, header, footer, lưới nội dung
+   Mobile-first: CSS ngoài @media là giao diện điện thoại.
+   Chỉ dùng 2 mốc: @media (width >= 40rem) và @media (width >= 64rem).
+   Tra tên class trong README.md (mục "Class có sẵn trong HTML").
+   ========================================================================== */
+
+/* TODO(ch2-T3): .container — rộng tối đa --container-max, căn giữa (margin-inline: auto),
+   padding-inline --space-4, từ 40rem tăng lên --space-6 */
+
+/* TODO(ch2-T3): .site-header nền --color-header-bg; từ 40rem: position: sticky; top 0.
+   .site-header__inner và .site-nav__list dùng Flexbox (flex-wrap: wrap, gap, align-items: center,
+   justify-content: space-between); bỏ dấu chấm của list */
+
+/* TODO(ch2-T3): .site-footer nền tối, chữ nhỏ; .site-footer__inner cột dọc, từ 64rem thành hàng ngang */
+
+/* TODO(ch2-T3): .page (padding trên dưới), .page--narrow (hẹp lại cho form), .page__intro (tối đa 60ch),
+   .section, .section__head (Flexbox: tiêu đề trái, link "Xem tất cả" phải) */
+
+/* TODO(ch2-T3): .hero — Grid 1 cột, nền gradient từ primary tới màu tối, chữ trắng, bo góc lớn;
+   từ 64rem: grid-template-columns 2 cột */
+
+/* TODO(ch2-T4): .card-grid — display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap; bỏ list-style.
+   KHÔNG dùng media query cho lưới này. */
+
+/* TODO(ch2-T5): .detail — Grid 1 cột; từ 64rem: 2 cột (2fr và 1fr) với grid-template-areas
+     "head head" "media info" "content info" "prep info" "foot foot".
+   Gán grid-area cho .detail__head/__media/__info/__content/__prep/__foot CHỈ BÊN TRONG media query.
+   .detail__info: align-self: start; position: sticky; top chừa chỗ cho header */
+/* bai tap
+
+/* ==========================================================================
+   layout.css — Bố cục trang EduHub Web
+   Ch2-T3: Container, header, footer, hero responsive.
+   Ch2-T4: Lưới card.
+   Ch2-T5: Grid template areas cho trang chi tiết.
+   Mobile-first: thiết kế điện thoại trước, mở rộng ở 640px và 1024px.
+   ========================================================================== */
+
+/* ---- Container: giới hạn chiều rộng và căn giữa ---- */
+.container {
+  inline-size: 100%;
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* ---- Header ---- */
+.site-header {
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+  box-shadow: var(--shadow-md);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-3);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  margin-block-start: var(--space-16);
+  padding-block: var(--space-8);
+  background-color: var(--color-header-bg);
+  color: #c9d6ea;
+  font-size: var(--text-sm);
+}
+
+.site-footer a {
+  color: var(--palette-cyan-500);
+}
+
+.site-footer small {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* ---- Menu điều hướng ---- */
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Nội dung trang ---- */
+.page {
+  padding-block: var(--space-8);
+}
+
+.page--narrow {
+  max-inline-size: var(--container-narrow);
+  margin-inline: auto;
+}
+
+.page__intro {
+  max-inline-size: 60ch;
+  margin-block: var(--space-3) var(--space-8);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+.section {
+  padding-block-start: var(--space-12);
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-block-end: var(--space-6);
+}
+
+/* ---- Lưới card tự thích ứng theo chiều rộng ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(16rem, 100%), 1fr)
+  );
+  gap: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Hero trang chủ ---- */
+.hero {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+
+  inline-size: calc(100% - 2 * var(--space-4));
+  max-inline-size: calc(var(--container-max) - 2 * var(--space-6));
+  margin: var(--space-6) auto 0;
+  padding: var(--space-8) var(--space-6);
+
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgb(0 196 204 / 35%),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      var(--palette-blue-700),
+      var(--palette-blue-900)
+    );
+  color: var(--palette-white);
+}
+
+/* ---- Trang chi tiết sự kiện ---- */
+.detail {
+  display: grid;
+  min-inline-size: 0;
+  gap: var(--space-6);
+}
+
+/* ---- Màn hình từ 640px trở lên ---- */
+@media (width >= 40rem) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+  }
+
+  .hero {
+    inline-size: calc(100% - 2 * var(--space-6));
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+/* ---- Màn hình từ 1024px trở lên ---- */
+@media (width >= 64rem) {
+  .hero {
+    grid-template-columns: 1.1fr 1fr;
+    padding: var(--space-12);
+  }
+
+  .detail {
+    grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr);
+    grid-template-areas:
+      "head head"
+      "media info"
+      "content info"
+      "prep info"
+      "foot foot";
+    column-gap: var(--space-8);
+  }
+
+  .detail__head {
+    grid-area: head;
+  }
+
+  .detail__media {
+    grid-area: media;
+    min-inline-size: 0;
+  }
+
+  .detail__content {
+    grid-area: content;
+    min-inline-size: 0;
+  }
+
+  .detail__prep {
+    grid-area: prep;
+  }
+
+  .detail__foot {
+    grid-area: foot;
+  }
+
+  .detail__info {
+    grid-area: info;
+    align-self: start;
+    position: sticky;
+    inset-block-start: 6rem;
+    min-inline-size: 0;
+  }
+}

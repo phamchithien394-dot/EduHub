@@ -1,0 +1,28 @@
+/* Tailwind v4: không còn tailwind.config.js — cấu hình viết thẳng trong CSS */
+/* source(none): tắt tự dò tệp, chỉ quét đúng events.html để sinh class */
+@import "tailwindcss" source(none);
+@source "../events.html";
+
+/* Design token chép từ ../css/tokens.css.
+   @theme sinh ra cả biến CSS lẫn class: --color-primary → bg-primary, text-primary... */
+@theme {
+  --color-primary: #003f87;
+  --color-primary-light: #7fb2ff;
+  --color-accent: #00c4cc;
+  --color-ink: #1a1a2e;
+  --color-navy: #001d45;
+  --color-navy-deep: #000f26;
+  --color-sky: #f0f7ff;
+  --color-sky-muted: #e3eefc;
+  --color-line: #cbd9ec;
+  --color-line-dark: #1f3d66;
+  --color-warning: #c2410c;
+
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 0.75rem;
+
+  /* Hai mốc giống bản CSS thuần: sm = 640px, lg = 1024px */
+  --breakpoint-sm: 40rem;
+  --breakpoint-lg: 64rem;
+}

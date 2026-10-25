@@ -1,0 +1,17 @@
+{
+  "name": "eduhub-ch02-challenge-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bài challenge Ch02: trang danh sách sự kiện viết lại bằng Tailwind CSS v4 (CLI)",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify",
+    "dev": "tailwindcss -i ./src/input.css -o ./tailwind.css --watch"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
